@@ -1,0 +1,33 @@
+{
+  "name": "android-bs",
+  "version": "1.0.0",
+  "description": "android build system",
+  "main": "gulpfile.js",
+  "dependencies": {
+    "gulp": "^3.9.1"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-image-resize": "^0.8.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jgbbarreiros/android-bs.git"
+  },
+  "keywords": [
+    "builtd",
+    "system",
+    "android",
+    "images",
+    "resize"
+  ],
+  "author": "João Barreiros",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jgbbarreiros/android-bs/issues"
+  },
+  "homepage": "https://github.com/jgbbarreiros/android-bs#readme"
+}
