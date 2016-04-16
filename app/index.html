@@ -8,6 +8,73 @@
 	</head>
 	<body>
 		<h1>Insert Title</h1>
+
+		<form action="index_submit" method="get" accept-charset="utf-8">
+
+			<!--
+			image
+			-->
+			<div class="img-placeholder">
+				<img src="img/portal.png" alt="Image Placeholder">
+				<input type="file" name="pic" accept="image/*">
+			</div>
+			
+			<!--
+			template
+			dp
+			filename
+			-->
+			<section class="menu-data">
+				<select class="form-control" name="select-template" required>
+					<option value="template" selected disabled hidden>Choose a template...</option>
+					<option value="icon">Icon</option>
+					<option value="notifications">Notifications</option>
+					<option value="actionbar">Action Bar, dialog and Tab icons</option>
+					<option value="contextual">Small Contextual Icons</option>
+					<option value="costume">Costume</option>
+				</select>
+				<input type="number" name="dpwidth" placeholder="320" min="1" max="9999" required> X</input>
+				<input type="number" name="dphight" placeholder="640" min="1" max="9999" required> dp</input>
+				<input type="text" name="filename" placeholder="File Name">
+			</section>
+			
+			<!--
+			croped
+			gravity
+			format
+			filter
+			background color
+			-->
+			<section class="menu-options">
+				<div class="btn-group" role="group" aria-label="...">
+					<button type="button" class="btn btn-default">None</button>
+					<button type="button" class="btn btn-default">Croped</button>
+				</div>
+				<select class="form-control" name="select-gravity" required>
+					<option value="gravity" selected disabled hidden>Choose a gravity...</option>
+					<option value="center">Center</option>
+				</select>
+				<select class="form-control" name="select-format" required>
+					<option value="format" selected disabled hidden>Choose a format...</option>
+					<option value="png">png</option>
+				</select>
+				<select class="form-control" name="select-filter" required>
+					<option value="filter" selected disabled hidden>Choose a filter...</option>
+					<option value="point">Point</option>
+				</select>
+				<input type="color" name="bg-color" value="#FFFFFF">
+			</section>
+
+		</form>
+
+		<section class="live-preview">
+			<img src="" alt="xxxhdpi">
+			<img src="" alt="xxhdpi">
+			<img src="" alt="xhdpi">
+			<img src="" alt="hdpi">
+			<img src="" alt="mdpi">
+		</section>
+
 		<p>{{"angular" + " works"}}</p>
 	</body>
 </html>
