@@ -1,0 +1,28 @@
+{
+  "name": "android-bs",
+  "description": "android build system",
+  "main": "gulpfile.js",
+  "authors": [
+    "João Barreiros"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "builtd",
+    "system",
+    "android",
+    "images",
+    "resize"
+  ],
+  "homepage": "https://github.com/jgbbarreiros/android-bs",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "angular": "1.5.3",
+    "bootstrap": "^3.3.6"
+  }
+}
