@@ -1,6 +1,8 @@
 var gulp = require('gulp');
-var gulp = require('gulp');
 var imageResize = require('gulp-image-resize');
+var browserSync = require('browser-sync');
+var reload = browserSync.reload;
+var prompt = require('prompt');
 
 const dpi = {
 	ldpi: 120,
@@ -8,30 +10,39 @@ const dpi = {
 	hdpi: 240,
 	xhdpi: 320,
 	xxhdpi: 480,
-	xxxhdpi: 640
-}
-var w = 200;
-var h = 200;
- 
-gulp.task('image-resize', function () {
+	xxxhdpi: 640}
 
-	var dpw = 48;
-	var dph = 48;
-	var type = 'drawable';
-	for (var i in dpi) {
-		var w = dpw * (dpi[i]/160);
-		var h = dph * (dpi[i]/160);
-		console.log(w);
-		console.log(h);
-		console.log(i);
-		resize(w, h, type + "-" + i);
-	}
-});
+gulp.task('default', ['html', 'styles', 'scripts', 'browser-sync', 'watch']);
 
-gulp.task('default', ['image-resize']);
+gulp.task('html', function () {
+	gulp.src('app/**/*.html')
+		.pipe(reload({stream: true}));});
+
+gulp.task('styles', function () {
+	gulp.src('app/**/*.css')
+		.pipe(reload({stream: true}));});
+
+gulp.task('scripts', function () {
+	gulp.src('app/**/*.js')
+		.pipe(reload({stream: true}));});
+
+gulp.task('browser-sync', function () {
+	browserSync({
+		server: {
+			baseDir: 'app',
+			routes: {
+        "/bower_components": "bower_components"
+      }
+		}
+	});});
+
+gulp.task('watch', function () {
+	gulp.watch('app/**/*.html', ['html']);
+	gulp.watch('app/js/**/*.js', ['scripts']);
+	gulp.watch('app/css/**/*.css', ['styles']);});
 
 var resize = function(w, h, dest) {
-	gulp.src('src/icon_green.png')
+	gulp.src('src/*.{png,jpg,jpeg,gif}')
 		.pipe(imageResize({ 
 			width : w,
 			height : h,
@@ -39,5 +50,14 @@ var resize = function(w, h, dest) {
 			upscale : false,
 			imageMagick : true
 		}))
-		.pipe(gulp.dest("res/" + dest));
-}
+		.pipe(gulp.dest("res/" + dest));}
+
+gulp.task('image-resize', function () {
+	prompt.start();
+	prompt.get(['dpw', 'dph', 'type'], function (err, result) {
+		for (var i in dpi) {
+			var w = result.dpw * (dpi[i]/160);
+			var h = result.dph * (dpi[i]/160);
+			resize(w, h, result.type + "-" + i);
+		}
+	});});
